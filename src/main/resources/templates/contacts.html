@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人通讯录</title>
+    <style>
+        table {
+            margin-top: 20px;
+            width: 500px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+            text-align: center;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        th{
+            border: 1px solid black;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>所有联系人</h1>
+<a th:href="@{/contacts/add}">添加新联系人</a>
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>地址</th>
+        <th>电话</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="contact : ${contacts}">
+        <td th:text="${contact.name}"></td>
+        <td th:text="${contact.address}"></td>
+        <td th:text="${contact.phone}"></td>
+        <td>
+            <a th:href="@{/contacts/edit/{id}(id=${contact.id})}">编辑</a> |
+            <a th:href="@{/contacts/delete/{id}(id=${contact.id})}">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

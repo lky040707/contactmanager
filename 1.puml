@@ -1,0 +1,41 @@
+@startuml
+class com.example.contactmanager.model.Contact {
+- Long id
+- String name
+- String address
+- String phone
++ Long getId()
++ void setId(Long)
++ String getName()
++ void setName(String)
++ String getAddress()
++ void setAddress(String)
++ String getPhone()
++ void setPhone(String)
+}
+class com.example.contactmanager.service.ContactService {
+- ContactRepository contactRepository
++ List<Contact> getAllContacts()
++ Optional<Contact> getContactById(Long)
++ Contact addContact(Contact)
++ Contact updateContact(Contact)
++ void deleteContact(Long)
+}
+interface com.example.contactmanager.repository.ContactRepository {
+}
+class com.example.contactmanager.ContactmanagerApplication {
++ {static} void main(String[])
+}
+class com.example.contactmanager.controller.ContactController {
+- ContactService contactService
++ String listContacts(Model)
++ String showAddForm(Model)
++ String addContact(Contact)
++ String showEditForm(Long,Model)
++ String updateContact(Long,Contact)
++ String deleteContact(Long)
+}
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.contactmanager.repository.ContactRepository
+@enduml

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑联系人</title>
+    <style>
+        form{
+            font-size:20px;
+        }
+        input{
+            font-size:20px;
+            width: 400px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        button{
+            width: 150px;
+            margin-left: 318px;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+<h1>编辑联系人</h1>
+<form th:action="@{/contacts/edit/{id}(id=${contact.id})}" method="post">
+    姓名：<input type="text" name="name" th:value="${contact.name}" required><br>
+    地址：<input type="text" name="address" th:value="${contact.address}"><br>
+    电话：<input type="text" name="phone" th:value="${contact.phone}" required><br>
+    <button type="submit">保存</button>
+</form>
+</body>
+</html>
